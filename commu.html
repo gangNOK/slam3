@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>슬램덩크 팬 커뮤니티</title>
+  <style>
+    
+    .content{
+      display: none;
+      padding: 20px;
+      background-color: #fff;
+      margin-top: 20px;
+    }
+
+    header {
+      position: relative;
+      height: 200px;
+    }
+
+    .header-image {
+      background-image: url('KakaoTalk_20230523_194359206.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 300px;
+    }
+
+    .header-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 300px;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .header-text {
+      color: white;
+      font-size: 50px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 50px
+      
+    }
+
+
+    /* 커뮤니티 메뉴 스타일 */
+    .community-menu {
+      background-color: #f8f8f8;
+      padding: 20px;
+    }
+
+    .menu-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .menu-list li {
+      margin-right: 20px;
+    }
+
+    .menu-list li:last-child {
+      margin-right: 0;
+    }
+
+    .menu-link {
+      color: #337ab7;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    nav ul {
+      display: flex;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      margin-top: 50px;
+    }
+
+    nav li {
+      margin-right: 10px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      padding: 10px;
+    }
+
+    .com-s{
+      text-align: center;
+      
+
+    }
+
+    #board {
+      width: 600px;
+      margin: 0 auto;
+    }
+    .post {
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      background-color: #f9f9f9;
+    }
+    .post .title {
+      font-weight: bold;
+    }
+    .post .content {
+      margin-top: 10px;
+    }
+    .post .date {
+      font-size: 12px;
+      color: #888;
+    }
+    #post-form {
+    text-align: center;
+  }
+
+  #post-form input[type="text"] {
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+  }
+
+  </style>
+
+  <script>
+       window.addEventListener('DOMContentLoaded', function() {
+      // 메뉴 클릭 이벤트 처리
+      var menuItems = document.querySelectorAll('.menu-item');
+      var contents = document.querySelectorAll('.content');
+      
+      for (var i = 0; i < menuItems.length; i++) {
+        menuItems[i].addEventListener('click', function() {
+          var menuItem = this;
+          var contentId = menuItem.dataset.contentId;
+          var content = document.getElementById(contentId);
+          
+          // 모든 내용 숨기기
+          for (var j = 0; j < contents.length; j++) {
+            contents[j].style.display = 'none';
+          }
+          
+          // 선택된 내용 보이기
+          content.style.display = 'block';
+        });
+      }
+    });
+
+  </script>
+</head>
+<body>
+  <header>
+    <div class="header-image">
+    </div>
+    <div class="header-overlay">
+      <div class="header-text">
+        <span class="icon">🏀</span> 
+            슬램덩크 팬 커뮤니티 <br>      
+            <nav>
+                <ul>
+                  <li class="menu-item" data-content-id="home">홈</a></li>
+                  <li class="menu-item" data-content-id="notice">공지사항</a></li>
+                  <li class="menu-item" data-content-id="freeboard">자유게시판</a></li>
+                  <li class="menu-item" data-content-id="rules">규칙</a></li>
+          </ul>
+        </nav>
+      </div>
+          
+     
+    </div>
+   
+    
+
+
+  </header>
+  <main>
+    <div id="home" class="content">
+      <!-- 홈 내용 추가 -->
+      <h2>홈</h2>
+    
+    </div>
+
+    <div id="notice" class="content">
+      <!-- 공지사항 내용 추가 -->
+      <h2>공지사항</h2>
+      <h3 class="com-s">슬램덩크 팬 사이트의 공지사항 페이지입니다.</h3>
+      <form>
+        <br><input type="text" placeholder="사용자 아이디" style="margin: 0 auto; display:block;">
+       <textarea placeholder="내용을 적으세요" style="margin: 0 auto; display:block; height: 300px; width: 1000px;" ></textarea>
+       <button type="submit" style=" margin: 0 auto; display:block;">제출</button>
+       
+     </form>
+      
+      <script>
+        document.getElementById('freeboard').addEventListener('submit', function(event) {
+          event.preventDefault(); // 기본 제출 동작을 막음
+      
+          // 입력된 값 가져오기
+          var title = document.querySelector('#freeboard input[type="text"]').value;
+          var content = document.querySelector('#freeboard textarea').value;
+      
+          // 게시물 생성
+          var post = document.createElement('li');
+          post.textContent = title + ': ' + content;
+      
+          // 게시물 목록에 추가
+          var postList = document.getElementById('post-list');
+          postList.appendChild(post);
+      
+          // 입력 필드 초기화
+          document.querySelector('#freeboard input[type="text"]').value = '';
+          document.querySelector('#freeboard textarea').value = '';
+        });
+      </script>
+      <ul id="post-list"></ul>
+    </div>
+
+    <div id="freeboard" class="content">
+      <!-- 자유게시판 내용 추가 -->
+      <h2>자유게시판</h2>
+      <h3 class="com-s">슬램덩크 팬 사이트의 자유게시판 페이지입니다.</h3>
+      <form>
+         <br><input type="text" placeholder="사용자 아이디" style="margin: 0 auto; display:block;">
+        <textarea placeholder="내용을 적으세요" style="margin: 0 auto; display:block; height: 300px; width: 1000px;" ></textarea>
+        <button type="submit" style=" margin: 0 auto; display:block;">제출</button>
+        
+      </form>
+      <script>
+        document.getElementById('freeboard').addEventListener('submit', function(event) {
+          event.preventDefault(); // 기본 제출 동작을 막음
+      
+          // 입력된 값 가져오기
+          var title = document.querySelector('#freeboard input[type="text"]').value;
+          var content = document.querySelector('#freeboard textarea').value;
+      
+          // 게시물 생성
+          var post = document.createElement('li');
+          post.textContent = title + ': ' + content;
+      
+          // 게시물 목록에 추가
+          var postList = document.getElementById('post-list');
+          postList.appendChild(post);
+      
+          // 입력 필드 초기화
+          document.querySelector('#freeboard input[type="text"]').value = '';
+          document.querySelector('#freeboard textarea').value = '';
+        });
+      </script>
+      <ul id="post-list"></ul>
+      
+    </div>
+    
+    <div id="rules" class="content" style=" background-color: #f2f2f2;
+    padding: 10px;
+    border-radius: 5px;">
+      <!-- 규칙 내용 추가 -->
+      <h2>규칙</h2>
+      <h1 class="com-s">슬램덩크 팬 사이트의 규칙 페이지입니다. </h1>
+      <h1>규칙</h1>
+      <ul style="font-size: 35px; font-weight: bold; margin-bottom: 30px">
+        <li> 본 사이트는 The First Slam Dunk를 보고 만든 팬 커뮤니티입니다.</li>
+        <li>상업적인 용도로 사용하지 않습니다.</li>
+        <li>회원끼리의 갈등은 간섭하지 않습니다.</li>
+        <li>관리자에게 건의할 사항이 있다면 게시판에[건의]를 붙여주세요.</li>
+        <li>기본적인 언어 예절은 존댓말 입니다.</li>
+        <li>공지사항에 허락없는 글을 올릴시 삭제 조치 합니다.</li>
+        <li>게시물 삭제 및 강제 퇴장조치합니다. </li>
+        <li>슬램덩크와 관련된 내용이 아닌 글을 게시할 경우 즉시 삭제합니다.</li>
+        <li>욕설 사용할 시 게시글 바로 삭제 합니다.</li>
+      </ul>
+      
+    </div>
+  </main>
+  
+
+
+</body>
+</html>
